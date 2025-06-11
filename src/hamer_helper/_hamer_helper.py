@@ -90,7 +90,7 @@ class HamerHelper:
     def __init__(self) -> None:
         import hamer
         from hamer.models import DEFAULT_CHECKPOINT, load_hamer
-        from vitpose_model import ViTPoseModel
+        from hamer.vitpose_model import ViTPoseModel
 
         # HaMeR hardcodes a bunch of relative paths...
         # Instead of modifying HaMeR we're going to hack this by temporarily changing our working directory :)
