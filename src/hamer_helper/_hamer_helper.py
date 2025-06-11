@@ -118,6 +118,7 @@ class HamerHelper:
             with _stopwatch("Creating Detectron2 predictor..."):
                 cfg_path = (
                     Path(hamer.__path__[0])
+                    / "hamer"
                     / "configs"
                     / "cascade_mask_rcnn_vitdet_h_75ep.py"
                 )
