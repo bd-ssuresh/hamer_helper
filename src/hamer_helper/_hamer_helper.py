@@ -94,14 +94,14 @@ class HamerHelper:
 
         # HaMeR hardcodes a bunch of relative paths...
         # Instead of modifying HaMeR we're going to hack this by temporarily changing our working directory :)
-        hamer_directory = Path(hamer.__file__).parent.parent
+        hamer_directory = Path(hamer.__path__[0])
 
         with temporary_cwd_context(hamer_directory):
             # Download and load checkpoints
             # download_models(Path(hamer.__file__).parent.parent /CACHE_DIR_HAMER)
             with _stopwatch("Loading HaMeR model..."):
                 model, model_cfg = load_hamer(
-                    str(Path(hamer.__file__).parent.parent / DEFAULT_CHECKPOINT)
+                    str(Path(hamer.__path__[0]) / DEFAULT_CHECKPOINT)
                 )
 
             # Setup HaMeR model
@@ -117,7 +117,7 @@ class HamerHelper:
 
             with _stopwatch("Creating Detectron2 predictor..."):
                 cfg_path = (
-                    Path(hamer.__file__).parent
+                    Path(hamer.__path__[0])
                     / "configs"
                     / "cascade_mask_rcnn_vitdet_h_75ep.py"
                 )
